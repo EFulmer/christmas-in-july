@@ -82,18 +82,17 @@ int main(int argc, char* argv[]) {
     int result = 0;
     FILE* fp;
 
-    // fp = fopen("./input.txt", "r");
     fp = fopen("./input_test_01.txt", "r");
 
     if (fp == NULL) {
         printf("Error opening file.");
         return 1;
-    } else {
-        while (fgets(current_line, sizeof current_line, fp) != NULL) {
-            first_digit = get_first_digit(current_line);
-            last_digit = get_last_digit(current_line, strlen(current_line));
-            result += (10 * first_digit + last_digit);
-        }
+    }
+
+    while (fgets(current_line, sizeof current_line, fp) != NULL) {
+        first_digit = get_first_digit(current_line);
+        last_digit = get_last_digit(current_line, strlen(current_line));
+        result += (10 * first_digit + last_digit);
     }
     printf("%d\n", result);
     fclose(fp);
